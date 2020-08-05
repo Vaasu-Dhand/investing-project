@@ -1,0 +1,76 @@
+{{!-- Navbar --}}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+  {{!-- <div class="collapse navbar-collapse" id="navbarColor01"> --}}
+    <ul class="navbar-nav mr-auto justify-content-end">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/list">List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/register">Register</a>
+      </li>
+      
+    </ul>
+</nav>
+{{!-- Title --}}
+<h1 class="display-4 text-center mt-5 mb-4">Register a Company</h1>
+
+{{!-- Form --}}
+{{!-- !enctype ===  enctype="application/x-www-form-urlencoded"  --}}
+<form method="POST">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Title</label>
+    <input type="text" class="form-control" id="input-title" aria-describedby="" placeholder="Enter Title">
+    <small id="input-title-warning" class="form-text text-muted font-italic">Title cannot be changed later</small>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Telephone No.</label>
+      <input type="tel" class="form-control" id="inputPassword4" placeholder="Telephone No.">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">Address 2</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">City</label>
+      <input type="text" class="form-control" id="inputCity">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="input-province">Province</label>
+      <select id="input-province" class="form-control">
+        <option selected>Choose...</option>
+        <option>AB</option>
+        <option>BC</option>
+        <option>MB</option>
+        <option>NB</option>
+        <option>NT</option>
+        <option>NS</option>
+        <option>NU</option>
+        <option>ON</option>
+        <option>PE</option>
+        <option>QC</option>
+        <option>SK</option>
+        <option>YT</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">Zip</label>
+      <input type="text" class="form-control" id="inputZip">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Register Comapany</button>
+</form>

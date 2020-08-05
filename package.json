@@ -1,0 +1,27 @@
+{
+  "name": "investing.com-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "keywords": [],
+  "author": "Vaasu Dhand",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "comma-number": "^2.0.1",
+    "cors": "^2.8.5",
+    "countup.js": "^2.0.6",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.0.0",
+    "html-to-text": "^5.1.1",
+    "mongoose": "^5.9.24"
+  }
+}

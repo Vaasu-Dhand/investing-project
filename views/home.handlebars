@@ -1,0 +1,218 @@
+{{!-- Navbar --}}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  {{!-- <div class="collapse navbar-collapse" id="navbarColor01"> --}}
+  <ul class="navbar-nav mr-auto justify-content-end">
+    {{!-- Add Logo here --}}
+    {{!-- </li> --}}
+    <li class="nav-item active">
+      <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/list">List</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/register">Register</a>
+    </li>
+  </ul>
+
+</nav>
+
+{{!-- Title --}}
+<h1 class="display-4 text-center my-5" id="title">Companies.com</h1>
+
+
+{{!-- Paragraph  --}}
+<p class="text-justify">
+  Companies.com is a global financial portal and internet brand, composed of 33 editions in 24 languages and mobile apps
+  for Android and iOS that provide news, analysis, streaming quotes and charts, technical data and financial tools about
+  the global financial markets.
+</p>
+
+{{!-- Cards --}}
+<div class="container">
+  <div class="row">
+    {{!-- Facebook --}}
+    <div class="col">
+      <div class="card bg-light mb-3" style="max-width: 50rem;">
+        <div class="card-header h5" style="line-height: 2;">{{ facebook.ipo.stock_symbol }}
+          <span style="font-size: 0.5rem; float: right;"><i class="fab fa-facebook fa-4x"></i></span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title text-center" style="font-weight: 1000; font-weight: bold;">{{ facebook.name }}</h3>
+          <p class="overview font-italic">{{ facebook.overview }}</p>
+          <p>
+            {{#each facebook.tag_list }}
+            <span class="badge badge-pill badge-primary">{{ this }}</span>
+            {{/each}}
+          </p>
+          {{!-- Grid --}}
+          <div class="container">
+            <div class="row">
+              <div class="col-sm font-weight-bold">
+                No. of Employees
+              </div>
+              <div class="col-sm font-weight-bold border-right border-left border-primary border-width">
+                Total Money Raised
+              </div>
+              <div class="col-sm font-weight-bold">
+                Valuation Amount
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                {{ facebook.number_of_employees }}
+              </div>
+              <div class="col-sm border-right border-left border-primary border-width">
+                ${{ facebook.total_money_raised }}
+              </div>
+              <div class="col-sm">
+                ${{ facebook.ipo.valuation_amount }}
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+          <a href="#" class="btn btn-outline-primary btn-view-more">View More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{!-- Apple --}}
+    <div class="col">
+      <div class="card bg-light mb-3" style="max-width: 50rem;">
+        <div class="card-header h5" style="line-height: 2;">{{ apple.ipo.stock_symbol }}
+          <span style="font-size: 0.5rem; float: right;"><i class="fab fa-apple fa-4x"></i></span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title text-center" style="font-weight: 1000; font-weight: bold;">{{ apple.name }}</h3>
+          <p class="overview font-italic">{{ apple.overview }}</p>
+          <p>
+            {{#each apple.tag_list }}
+            <span class="badge badge-pill badge-primary">{{ this }}</span>
+            {{/each}}
+          </p>
+          {{!-- Grid --}}
+          <div class="container">
+            <div class="row">
+              <div class="col-sm font-weight-bold">
+                No. of Employees
+              </div>
+              <div class="col-sm font-weight-bold border-right border-left border-primary border-width">
+                Total Money Raised
+              </div>
+              <div class="col-sm font-weight-bold">
+                Valuation Amount
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                {{ apple.number_of_employees }}
+              </div>
+              <div class="col-sm border-right border-left border-primary border-width">
+                ${{ apple.total_money_raised }}
+              </div>
+              <div class="col-sm">
+                ${{ apple.ipo.valuation_amount }}
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+          <a href="#" class="btn btn-outline-primary btn-view-more">View More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    {{!-- Twitter --}}
+    <div class="col">
+      <div class="card bg-light mb-3" style="max-width: 50rem;">
+        <div class="card-header h5" style="line-height: 2;">{{ twitter.ipo.stock_symbol }}
+          <span style="font-size: 0.5rem; float: right;"><i class="fab fa-twitter fa-4x"></i></span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title text-center" style="font-weight: 1000; font-weight: bold;">{{ twitter.name }}</h3>
+          <p class="overview font-italic">{{ twitter.overview }}</p>
+          <p>
+            {{#each twitter.tag_list }}
+            <span class="badge badge-pill badge-primary">{{ this }}</span>
+            {{/each}}
+          </p>
+          {{!-- Grid --}}
+          <div class="container">
+            <div class="row">
+              <div class="col-sm font-weight-bold">
+                No. of Employees
+              </div>
+              <div class="col-sm font-weight-bold border-right border-left border-primary border-width">
+                Total Money Raised
+              </div>
+              <div class="col-sm font-weight-bold">
+                Valuation Amount
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                {{ twitter.number_of_employees }}
+              </div>
+              <div class="col-sm border-right border-left border-primary border-width">
+                ${{ twitter.total_money_raised }}
+              </div>
+              <div class="col-sm">
+                ${{ twitter.ipo.valuation_amount }}
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+          <a href="#" class="btn btn-outline-primary btn-view-more">View More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{!-- Starbucks --}}
+    <div class="col">
+      <div class="card bg-light mb-3" style="max-width: 50rem;">
+        <div class="card-header h5" style="line-height: 2;">{{ starbucks.ipo.stock_symbol }}
+          <span style="font-size: 0.5rem; float: right;"><i class="fas fa-coffee fa-4x"></i></span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title text-center" style="font-weight: 1000; font-weight: bold;">{{ starbucks.name }}</h3>
+          <p class="overview font-italic">{{ starbucks.overview }}</p>
+          <p>
+            {{#each starbucks.tag_list }}
+            <span class="badge badge-pill badge-primary">{{ this }}</span>
+            {{/each}}
+          </p>
+          {{!-- Grid --}}
+          <div class="container">
+            <div class="row">
+              <div class="col-sm font-weight-bold">
+                No. of Employees
+              </div>
+              <div class="col-sm font-weight-bold border-right border-left border-primary border-width">
+                Total Money Raised
+              </div>
+              <div class="col-sm font-weight-bold">
+                Valuation Amount
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                {{ starbucks.number_of_employees }}
+              </div>
+              <div class="col-sm border-right border-left border-primary border-width">
+                ${{ starbucks.total_money_raised }}
+              </div>
+              <div class="col-sm">
+                ${{ starbucks.ipo.valuation_amount }}
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+          <a href="#" class="btn btn-outline-primary btn-view-more">View More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
