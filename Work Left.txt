@@ -1,4 +1,22 @@
 HOME PAGE
-# Add Text Animation
-# Add Numbers Animation
 
+COMPANY PAGE
+# When Images are lesser than 4 Middleware for '/company' route !important
+# Responsive Office information for '/comapny' route
+# Add Elipsis for content limit in overview (see facebook) !important
+
+LIST PAGE
+# Pagination (Center and Wrap) 
+
+REGISTER PAGE 
+# 2nd Auth Page Create
+
+-- General
+
+// Bugs
+
+REGISTER PAGE
+# rememberFields custom helper only remembers one word, doesn't return the string after one word 
+# Button color lost after selecting category
+
+COMPANY PAGE

@@ -1,26 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Members App</title>
+  <title>Companies.com</title>
+
+  {{!-- Favicon --}}
+  <link rel="icon" type="image/png" href="/images/Favicon.png" />
+
   {{!-- Bootstrap CDN --}}
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+
   {{!-- Bootswatch CDN --}}
-  {{!-- <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/lux/bootstrap.min.css" rel="stylesheet"> --}}
-  {{!-- <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/litera/bootstrap.min.css" rel="stylesheet"> --}}
   <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/pulse/bootstrap.min.css" rel="stylesheet">
 
   {{!-- Font Awesome CDN --}}
   <script src="https://kit.fontawesome.com/d5e8337ebb.js" crossorigin="anonymous"></script>
   
-  {{!-- CSS File Import --}}
-  <link rel="stylesheet" href="./style.css" type="text/css">
+  {{!-- Devicon CDN --}}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/konpa/devicon@master/devicon.min.css">
+
+  {{!-- Typed.js Import --}}
+  <script src="/js/typed.min.js"></script>
+
+  {{!-- Script.js Import  --}}
+  <script src="/js/script.js"></script>
+
+  {{!-- Style.css Import --}}
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
 </head>
+
 <body>
-  <div class="container mt-4">
-    {{{body}}}
+  {{!-- Header --}}
+  <nav class="navbar navbar-expand navbar-dark bg-primary justify-content-center">
+    {{!-- <div class="collapse navbar-collapse" id="navbarColor01"> --}}
+    <ul class="navbar-nav justify-content-center">
+      {{!-- Add Logo here --}}
+      {{!-- </li> --}}
+      <li class="nav-item">
+        <a class="nav-link h4 font-weight-normal" href="/" onclick="selectNavMenu(this)">Home</a>
+      </li>
+      <li class="nav-item px-5">
+        <a class="nav-link h4 font-weight-normal" href="/list?page=1">List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link h4 font-weight-normal" href="/register">Register</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="container">
+    {{{ body }}}
   </div>
-  
+  {{!-- Footer --}}
+  <div class="d-flex justify-content-around bg-primary text-light mt-3 footer">
+    <div class="p-2 bd-highlight">
+      <i class="devicon-handlebars-plain-wordmark footer-icons"></i>
+    </div>
+    <div class="p-2 bd-highlight">
+      <i class="devicon-bootstrap-plain footer-icons"></i>
+    </div>
+    <div class="p-2 bd-highlight">
+      <i class="fab fa-node footer-icons"></i>
+    </div>
+    <div class="p-2 bd-highlight">
+      <i class="devicon-express-original footer-icons"></i>
+    </div>
+    <div class="p-2 bd-highlight">
+      <i class="devicon-mongodb-plain-wordmark footer-icons"></i>
+    </div>
+    <div class="p-2 bd-highlight">
+      <i class="fab fa-npm footer-icons"></i>
+    </div>
+  </div>
 </body>
+
 </html>

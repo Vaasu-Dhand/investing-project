@@ -42,7 +42,7 @@ module.exports = {
       company.tag_list = company.tag_list.split(", ");
       // Coverting number_of_employees and valuation_amount to comma format
       company.number_of_employees = commaNumber(company.number_of_employees);
-      company.ipo.valuation_amount = commaNumber(company.ipo.valuation_amount);
+      company.ipo.valuation_amount = commaNumber(company.ipo.valuation_amount); 
       // Converting total_money_raised String to Number format
       // Billions
       if (company.total_money_raised.includes("B")) {

@@ -1,26 +1,51 @@
-{{!-- Navbar --}}
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-
-  {{!-- <div class="collapse navbar-collapse" id="navbarColor01"> --}}
-    <ul class="navbar-nav mr-auto justify-content-end">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/list">List</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/register">Register</a>
-      </li>
-    </ul>
-</nav>
-
 {{!-- Title --}}
 <h1 class="display-4 text-center my-5">Companies</h1>
 
 {{!-- Search --}}
-<form class="form">
-    <input class="form-control mr-sm-2 rounded" type="search" placeholder="Search" aria-label="Search">
-  </form>
+<form class="form" onsubmit="valueSearch(event, this)">
+  <input id="search" class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Search" aria-label="Search">
+</form>
 
+{{!-- Button Group --}}
+<div class="btn-group my-3 d-flex flex-wrap" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-secondary mr-3 rounded-pill" onclick="redirectToCategory('advertising', this)">Advertising</button>
+  <button type="button" class="btn btn-secondary mr-3 rounded-pill" onclick="redirectToCategory('ecommerce')">Ecommerce</button>
+  <button type="button" class="btn btn-secondary mr-3 rounded-pill" onclick="redirectToCategory('finance')">Finance</button>
+  <button type="button" class="btn btn-secondary mr-3 rounded-pill" onclick="redirectToCategory('games_video')">Games/Video</button>
+  <button type="button" class="btn btn-secondary mr-3 rounded-pill" onclick="redirectToCategory('hardware')">Hardware</button>
+  <button type="button" class="btn btn-secondary mr-3 rounded-pill" onclick="redirectToCategory('mobile')">Mobile</button>
+  <button type="button" class="btn btn-secondary mr-3 rounded-pill" onclick="redirectToCategory('music')">Music</button>
+  <button type="button" class="btn btn-secondary mr-3 rounded-pill" onclick="redirectToCategory('news')">News</button>
+  <button type="button" class="btn btn-secondary mr-3 rounded-pill" onclick="redirectToCategory('social')">Social</button>
+  <button type="button" class="btn btn-secondary mr-3 rounded-pill" onclick="redirectToCategory('software')">Software</button>
+  <button type="button" class="btn btn-secondary mr-3 rounded-pill" onclick="redirectToCategory('web')">Web</button>
+</div>
 
+{{!-- Cards --}}
+{{> noResultsFound}}
+<div class="row">
+{{#each data.companies}}
+{{!-- {{log this}} --}}
+  {{!-- Breaks the line if index is even  --}}
+  {{#if (rowBreaker @index)}} 
+    <div class="w-100"></div>
+  {{/if}}
+  <div class="col">
+    <div class="card border-secondary mb-3 card-hover">
+      <div class="card-body">
+        <a class="card-title h4 text-dark" href='/list/{{this._id}}' style="display: block;">{{this.name}}
+        <span class="card-subtitle mb-2 text-muted h6 float-right">@{{this.twitter_username}}</span>
+        </a>
+        <p class="card-text capitalize">
+          {{this.description}}
+        </p>
+        <span class="card-link text-primary">{{this.total_money_raised}}</span>
+      </div>
+    </div>
+  </div>
+{{/each}}
+</div>
+
+{{!-- Pagination --}}
+  {{{pagination}}}
+  

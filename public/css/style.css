@@ -1,0 +1,140 @@
+*::selection {
+  color: white;
+  background-color: #9400d3;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.footer {
+  height: 50px;
+}
+
+.container {
+  flex: 1;
+}
+
+.navbar {
+  max-height: 10vh;
+}
+
+/* Home Page CSS */
+.overview {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.1em;
+  display: -webkit-box;
+  line-height: 16px;
+  max-height: 48px;
+  -webkit-line-clamp: 3; /* Write the number of 
+                              lines you want to be 
+                              displayed */
+  -webkit-box-orient: vertical;
+}
+
+.border-width {
+  border-width: 2px !important;
+}
+
+.btn-view-more {
+  margin-top: 10px;
+  border-radius: 30px;
+}
+
+.footer-icons {
+  font-size: 2em;
+}
+
+/* Company Page */
+.img-size {
+  max-width: 30vw;
+  /* max-height: ; */
+}
+
+/* 404 Page CSS */
+
+/* List Page CSS */
+.capitalize {
+  text-transform: capitalize;
+}
+
+.no-results-svg {
+  height: 350px;
+  width: 350px;
+}
+
+.card-hover:hover {
+  background-color: #e7e0f3;
+  /* Add a 3D hover effect here */
+}
+
+#wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80em;
+}
+
+#container {
+  color: #011a32;
+  display: flex;
+  flex-direction: column;
+  float: left;
+  justify-content: center;
+  padding: 1em;
+  width: 100%;
+}
+
+#no-results-text {
+  animation: text-shadow 1.5s ease-in-out infinite;
+  font-size: 3em;
+  font-weight: 100;
+  line-height: 1;
+}
+
+#no-results-text:hover {
+  animation-play-state: paused;
+}
+
+@keyframes text-shadow {
+  0% {
+    transform: translateY(0);
+    text-shadow: 0 0 0 #0c2ffb, 0 0 0 #2cfcfd, 0 0 0 #fb203b, 0 0 0 #fefc4b;
+  }
+
+  20% {
+    transform: translateY(-1em);
+    text-shadow: 0 0.125em 0 #0c2ffb, 0 0.25em 0 #2cfcfd, 0 -0.125em 0 #fb203b,
+      0 -0.25em 0 #fefc4b;
+  }
+
+  40% {
+    transform: translateY(0.5em);
+    text-shadow: 0 -0.0625em 0 #0c2ffb, 0 -0.125em 0 #2cfcfd,
+      0 0.0625em 0 #fb203b, 0 0.125em 0 #fefc4b;
+  }
+
+  60% {
+    transform: translateY(-0.25em);
+    text-shadow: 0 0.03125em 0 #0c2ffb, 0 0.0625em 0 #2cfcfd,
+      0 -0.03125em 0 #fb203b, 0 -0.0625em 0 #fefc4b;
+  }
+
+  80% {
+    transform: translateY(0);
+    text-shadow: 0 0 0 #0c2ffb, 0 0 0 #2cfcfd, 0 0 0 #fb203b, 0 0 0 #fefc4b;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

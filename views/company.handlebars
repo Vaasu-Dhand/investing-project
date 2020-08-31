@@ -1,101 +1,57 @@
-{{!-- Navbar --}}
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  {{!-- <div class="collapse navbar-collapse" id="navbarColor01"> --}}
-  <ul class="navbar-nav mr-auto justify-content-end">
-    {{!-- Add Logo here --}}
-    {{!-- </li> --}}
-    <li class="nav-item active">
-      <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/list">List</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/register">Register</a>
-    </li>
-  </ul>
-</nav>
 
-{{!-- Stock Symbol and Founded Date --}}
-<div class="d-flex flex-row justify-content-between">
-  <div class="p-2">Flex item 1</div>
-  <div class="p-2">Flex item 2</div>
-</div>
-
-{{!-- Title --}}
-<h1 class="display-3 text-center">{{ company.name }}</h1>
-
-{{!-- Description --}}
-<p class="text-center">
-  Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
-</p>
-
-{{!-- Overview --}}
-<p class="lead text-center">
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum rerum quis, alias accusantium praesentium ab
-  deserunt iusto veritatis et architecto delectus vero deleniti accusamus. Delectus laboriosam rerum asperiores ratione
-  cumque a architecto tenetur! Libero atque ipsa blanditiis minus quas! Libero earum perspiciatis mollitia cum veritatis
-  illum eligendi optio eveniet neque.
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi ducimus, repellat veritatis blanditiis, odio
-  consectetur harum iusto tempora odit impedit rerum dolores recusandae corporis maiores, corrupti quasi ratione!
-  Repudiandae sunt harum, voluptas quas exercitationem assumenda fugiat et laborum saepe consequatur enim,
-  necessitatibus aliquam excepturi quae iure reprehenderit dolores laboriosam quos.
-</p>
-
-{{!-- Executives --}}
-<nav class="navbar navbar-light bg-light">
-  <span class="navbar-brand mb-0 h1">Executives</span>
-</nav>
-
-<div class="container">
-  <div class="row">
-    {{!-- One --}}
-    <div class="col-sm">
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
-    {{!-- Two --}}
-    <div class="col-sm">
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
-    {{!-- Three --}}
-    <div class="col-sm">
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
-    {{!-- Four --}}
-    <div class="col-sm">
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
+  {{!-- Stock Symbol and Founded Date --}}
+  <div class="d-flex flex-row justify-content-between">
+    <div class="p-2"> {{ company.ipo.stock_symbol }} </div>
+    <div class="p-2">Founded: {{foundedDate company.founded_day company.founded_month company.founded_year}} </div>
   </div>
-</div>
+
+  {{!-- Title --}}
+  <h1 class="display-3 text-center">{{ company.name }}</h1>
+
+  {{!-- Description --}}
+  <p class="text-center">
+    {{ company.description }}
+  </p>
+
+  {{!-- Overview --}}
+  <p class="lead text-center">
+    {{ company.overview }}
+  </p>
+
+  {{!-- Executives --}}
+  <nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">Executives</span>
+  </nav>
+
+  <div class="card-deck">
+    {{#each company.relationships}}
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" alt="Card image cap" src={{lookup ../company.images @index}}>
+      <div class="card-body">
+        <h5 class="card-title">{{ this.person.first_name }} {{ this.person.last_name }}</h5>
+        <h6 class="card-subtitle">{{ this.title }}</h6>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+  {{!-- Office's --}}
+  <nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">Office's</span>
+  </nav>
+
+    <div class="text-center">
+  <div class="card-deck">
+    {{#each company.offices}}
+
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top img-fluid mx-auto img-size" src={{addImage }} alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-text">{{populateDescription this.description}}</h5>
+        <h6 class="card-text">{{this.address1}}, {{this.address2}}, {{this.zip_code}}</h6>
+        <h6 class="card-text">{{this.city}}, {{this.state_code}}, {{this.country_code}}</h6>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+    </div>
