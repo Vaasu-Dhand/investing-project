@@ -125,6 +125,7 @@ module.exports = {
     }
     if (req.query.search) {
       const search = startCase(camelCase(req.query.search)).replace(/ /g, ""); // Lodash
+      // console.log(search);
       const onSearchData = await Companies.find({ name: search },
         "name twitter_username description permalink total_money_raised"
       )

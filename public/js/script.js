@@ -30,6 +30,10 @@ if (window.location.pathname == '/list') {
   }
 }
 
-// /list/:id route
-
+// /register route
+if (window.location.pathname == '/register') {
+  function stockChange(element) {
+    console.log('Hello', element);
+  }
+}
 

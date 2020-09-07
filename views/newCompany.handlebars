@@ -1,0 +1,73 @@
+{{!-- Used Front End Validation (https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation) --}}
+
+<form method="POST">
+  {{!-- Stock and Founded Date --}}
+  <div class="d-flex flex-row justify-content-between">
+    <div class="p-2 row">
+      {{!-- Stock Index --}}
+      <select class="form-control border border-primary rounded col-sm" id="form-select-index" name="stockIndex"
+        aria-placeholder="Stock Symbol">
+        <option class="dropdown-item" value="NASDAQ">NASDAQ</option>
+        <option class="dropdown-item" value="NYSE">NYSE</option>
+        <option class="dropdown-item" value="DJIA">DJIA</option>
+      </select>
+      {{!-- Stock Symbol --}}
+      <div class="form-inline col-sm">
+        <label class="sr-only" for="inlineFormInputName2">Name</label>
+        <input type="text" class="form-control mb-2 mr-sm-2 uppercase align-middle  border border-primary rounded"
+          id="inlineFormInputName2" name="stockSymbol" style="width: 80px;" placeholder="Symbol"
+          maxlength="4" minlength="4" onkeypress="return /[a-z]/i.test(event.key)" required>
+      </div>
+    </div>
+    {{!-- Date --}}
+    <div class="p-2" name="founded-date" id="date">Founded: {{ currentDate }} </div>
+  </div>
+
+  
+
+  {{!-- Title --}}
+  <h1 class="display-3 text-center text-capitalize" name="name" id="newCompany-name">{{ addSpace companyName }}</h1>
+
+  {{!-- Category --}}
+  <div class="form-group">
+    <label for="exampleSelect1">Category</label>
+    <select class="form-control border border-primary rounded col-sm" id="category-code" name="category_code">
+      <option value="advertising">Advertising</option>
+      <option value="ecommerce">Ecommerce</option>
+      <option value="finance">Finance</option>
+      <option value="games_video">Games/Video</option>
+      <option value="hardware">Hardware</option>
+      <option value="mobile">Mobile</option>
+      <option value="music">Music</option>
+      <option value="news">News</option>
+      <option value="social">Social</option>
+      <option value="software">Software</option>
+      <option value="web">Web</option>
+    </select>
+  </div>
+
+  {{!-- Description --}}
+  <div class="form-group">
+    <label for="exampleInputPassword1">Description</label>
+    <input type="text" class="form-control h6 border border-primary rounded" id="description"
+      placeholder="Write A Few Words To Describe Your Company..." name="description" minlength="3" maxlength="30" required>
+  </div>
+
+  {{!-- Overview --}}
+  <p class="text-center">
+  <div class="form-group">
+    <label for="exampleTextarea">Overview</label>
+    <textarea name="overview" class="form-control h6 border border-primary rounded" id="exampleTextarea" rows="5"
+      placeholder="Write Your Company's Overview Here..." required minlength="15"></textarea>
+  </div>
+  </p>
+
+  {{!-- Add Image Upload --}}
+
+  {{!-- Save Button --}}
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary btn-lg rounded-pill text-center mb-4 mt-2">Save</button>
+  </div>
+</form>
+
+{{!-- NOTE: We need to have - name, value, id attributes on input tags in HTML forms for sending a POST Request --}}

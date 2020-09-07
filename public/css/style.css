@@ -60,6 +60,12 @@ body {
 
 /* 404 Page CSS */
 
+
+/* Register Page CSS */
+.uppercase {
+  text-transform: uppercase;
+}
+
 /* List Page CSS */
 .capitalize {
   text-transform: capitalize;

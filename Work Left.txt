@@ -1,3 +1,5 @@
+-- General
+
 HOME PAGE
 
 COMPANY PAGE
@@ -6,12 +8,10 @@ COMPANY PAGE
 # Add Elipsis for content limit in overview (see facebook) !important
 
 LIST PAGE
-# Pagination (Center and Wrap) 
+# Pagination (Center and Wrap).
 
 REGISTER PAGE 
-# 2nd Auth Page Create
-
--- General
+# Add Execitives and office form and Image upload functionality.
 
 // Bugs
 

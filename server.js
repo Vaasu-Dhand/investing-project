@@ -5,17 +5,11 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const flash = require("connect-flash");
 const session = require("express-session");
+var cookieParser = require("cookie-parser");
 
 require("dotenv").config();
 
 const app = express();
-
-// Middleware
-// {Testing Middleware (BEFORE)}
-// app.use((req, res, next) => {
-//   console.log("before", req.body);
-//   next();
-// })
 
 // Express Session
 app.use(
@@ -29,6 +23,9 @@ app.use(
 // Connect Flash
 app.use(flash());
 
+// Cookie Parser
+app.use(cookieParser());
+
 // Global Vars
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash("success_msg");
@@ -39,12 +36,6 @@ app.use((req, res, next) => {
 // Bodyparser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// {Testing Middleware (AFTER)}
-// app.use((req, res, next) => {
-//   console.log("after", req.body);
-//   next();
-// })
 
 // Register Template engine
 app.engine(
@@ -58,7 +49,6 @@ app.engine(
         // console.log(field);
         return field != "" ? field : "";
       },
-
       // list Page
       rowBreaker: function (index) {
         if (index % 2 === 0 && index !== 0) {
@@ -68,45 +58,58 @@ app.engine(
           return false;
         }
       },
-      redirectToCategory: function (category) { // Check is not being used
-        console.log(globalThis);
-        // window.location = `?category=${category}`
-      },
       // company page
+      addSpace: function (title) {
+        return title.replace(/([a-z])([A-Z])/g, '$1 $2');
+      },
       addImage: function () {
-        const imageSrc = '/images/office_images/office' + (Math.floor(Math.random() * 11)) + '.jpg'
+        const imageSrc =
+          "/images/office_images/office" +
+          Math.floor(Math.random() * 11) +
+          ".jpg";
         return imageSrc;
       },
       foundedDate: function (day, month, year) {
-        if (day === null || month === null) return year
-        else return `${day}/${month}/${year}`
+        if (day === null || month === null) return year;
+        else return `${day}/${month}/${year}`;
       },
       populateDescription: function (description) {
-        if ((description === null) || (description === '')) {
-          const names = ['Headquaters', 'North Branch', 'Southern District', 'WhiteHall Office', 'Times Square', 'Crimson Bay', 'Blue Hills']
-          return names[Math.floor(Math.random() * 7)]
-        } else return description
+        if (description === null || description === "") {
+          const names = [
+            "Headquaters",
+            "North Branch",
+            "Southern District",
+            "WhiteHall Office",
+            "Times Square",
+            "Crimson Bay",
+            "Blue Hills",
+          ];
+          return names[Math.floor(Math.random() * 7)];
+        } else return description;
       },
-    }
+    },
   })
 );
-app.set("views", __dirname + "/views"); 
 
-const staticPath = path.join(__dirname, 'public')
-
+const staticPath = path.join(__dirname, "public");
 app.use(express.static(staticPath)); // Fix for MIME Type Not Supported
-console.log(path.join(__dirname, "public"));   
+
+app.set("views", __dirname + "/views");
 app.set("view engine", "handlebars");
 
 // Routes
 app.use("/", require("./routes/index"));
 
 // DB Config (Change This)
-const db = process.env.MONGO_URI; 
+const db = process.env.MONGO_URI;
 
-// Conect to Mongo
+// Connect to Mongo
 mongoose
-  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
+  .connect(db, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  })
   .then(() => console.log("MongoDB Connected..."))
   .catch((error) => console.error(error));
 

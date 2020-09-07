@@ -1,46 +1,44 @@
+{{!-- Stock Symbol and Founded Date --}}
+<div class="d-flex flex-row justify-content-between">
+  <div class="p-2"> {{ company.ipo.stock_symbol }} </div>
+  <div class="p-2">Founded: {{foundedDate company.founded_day company.founded_month company.founded_year}} </div>
+</div>
 
-  {{!-- Stock Symbol and Founded Date --}}
-  <div class="d-flex flex-row justify-content-between">
-    <div class="p-2"> {{ company.ipo.stock_symbol }} </div>
-    <div class="p-2">Founded: {{foundedDate company.founded_day company.founded_month company.founded_year}} </div>
-  </div>
+{{!-- Title --}}
+<h1 class="display-3 text-center text-capitalize mt-1">{{ addSpace company.name }}</h1>
 
-  {{!-- Title --}}
-  <h1 class="display-3 text-center">{{ company.name }}</h1>
+{{!-- Overview --}}
+<p class="lead text-center mt-4">
+  {{ company.overview }}
+</p>
 
-  {{!-- Description --}}
-  <p class="text-center">
-    {{ company.description }}
-  </p>
+{{!-- Executives --}}
+{{#if company.relationships}}
+<nav class="navbar navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1">Executives</span>  
+</nav>
+{{/if}}
 
-  {{!-- Overview --}}
-  <p class="lead text-center">
-    {{ company.overview }}
-  </p>
-
-  {{!-- Executives --}}
-  <nav class="navbar navbar-light bg-light">
-    <span class="navbar-brand mb-0 h1">Executives</span>
-  </nav>
-
-  <div class="card-deck">
-    {{#each company.relationships}}
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" alt="Card image cap" src={{lookup ../company.images @index}}>
-      <div class="card-body">
-        <h5 class="card-title">{{ this.person.first_name }} {{ this.person.last_name }}</h5>
-        <h6 class="card-subtitle">{{ this.title }}</h6>
-      </div>
+<div class="card-deck">
+  {{#each company.relationships}}
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" alt="Card image cap" src={{lookup ../company.images @index}}>
+    <div class="card-body">
+      <h5 class="card-title">{{ this.person.first_name }} {{ this.person.last_name }}</h5>
+      <h6 class="card-subtitle">{{ this.title }}</h6>
     </div>
-    {{/each}}
   </div>
+  {{/each}}
+</div>
 
-  {{!-- Office's --}}
-  <nav class="navbar navbar-light bg-light">
-    <span class="navbar-brand mb-0 h1">Office's</span>
-  </nav>
+{{!-- Office's --}}
+{{#if company.offices}}
+<nav class="navbar navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1">Office's</span>
+</nav>
+{{/if}}
 
-    <div class="text-center">
+<div class="text-center">
   <div class="card-deck">
     {{#each company.offices}}
 
@@ -54,4 +52,4 @@
     </div>
     {{/each}}
   </div>
-    </div>
+</div>
