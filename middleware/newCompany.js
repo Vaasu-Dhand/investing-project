@@ -1,20 +1,20 @@
-// const newCompany = require("../models/newCompany");
 const Companies = require("../models/Companies");
-const { camelCase, startCase, template } = require('lodash')
+const { camelCase, startCase } = require('lodash')
 
 module.exports = {
   checkNewCompany: function (req, res, next) {
     const cookieExists = req.cookies.newCompany;
     if (!cookieExists) {  // GET /register/newCompany
-      // QUESTION: I want to redirect to 404 page, in case the user dosen't have the new company cookie, but 404 page does not have a route address.
+      const error = new Error('Cookie Not Found')
+      // ? I want to redirect to 404 page, in case the user dosen't have the new company cookie, but 404 page does not have a route address.
       res.redirect("/404");
+      return next(error)
     }
+    // * console.log('Logs This if the next(error) isn"t retruned');
     next();
   },
-  saveCompany: async function (req, res, next) {  // POST /register/newCompany
-    // Form the data object in a way that /list/:id route can read data from it
+  saveCompany: async function (req, res, next) {  // POST /register/newCompany 
     const data = req.body;
-    // console.log(data);
     const [ companyName, currentDate ] = JSON.parse(req.cookies.newCompany);
     // Name
     data.name = companyName;

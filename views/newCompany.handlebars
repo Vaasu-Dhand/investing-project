@@ -15,15 +15,13 @@
       <div class="form-inline col-sm">
         <label class="sr-only" for="inlineFormInputName2">Name</label>
         <input type="text" class="form-control mb-2 mr-sm-2 uppercase align-middle  border border-primary rounded"
-          id="inlineFormInputName2" name="stockSymbol" style="width: 80px;" placeholder="Symbol"
-          maxlength="4" minlength="4" onkeypress="return /[a-z]/i.test(event.key)" required>
+          id="inlineFormInputName2" name="stockSymbol" style="width: 80px;" placeholder="Symbol" maxlength="4"
+          minlength="4" onkeypress="return /[a-z]/i.test(event.key)" required>
       </div>
     </div>
     {{!-- Date --}}
     <div class="p-2" name="founded-date" id="date">Founded: {{ currentDate }} </div>
   </div>
-
-  
 
   {{!-- Title --}}
   <h1 class="display-3 text-center text-capitalize" name="name" id="newCompany-name">{{ addSpace companyName }}</h1>
@@ -50,7 +48,8 @@
   <div class="form-group">
     <label for="exampleInputPassword1">Description</label>
     <input type="text" class="form-control h6 border border-primary rounded" id="description"
-      placeholder="Write A Few Words To Describe Your Company..." name="description" minlength="3" maxlength="30" required>
+      placeholder="Write A Few Words To Describe Your Company..." name="description" minlength="3" maxlength="30"
+      required>
   </div>
 
   {{!-- Overview --}}
@@ -61,8 +60,6 @@
       placeholder="Write Your Company's Overview Here..." required minlength="15"></textarea>
   </div>
   </p>
-
-  {{!-- Add Image Upload --}}
 
   {{!-- Save Button --}}
   <div class="text-center">

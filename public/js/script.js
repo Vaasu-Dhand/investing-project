@@ -1,11 +1,15 @@
 // General Script
-// console.log(window.location.pathname);
-// List.js
+function addActiveClass(page) {
+  const element = document.querySelector(`#nav-${page}`);
+  element.classList.add('active')
+}
 
-// / route
+// * / route
 if (window.location.pathname == '/') { 
-  // Typed.js
   window.onload = function() {
+    addActiveClass('home')
+
+    // Typed.js
     new Typed('#typed', {
       stringsElement: '#typed-strings',
       typeSpeed: 50,
@@ -15,12 +19,11 @@ if (window.location.pathname == '/') {
   }
 }
 
-// /list route
+// * /list route
 if (window.location.pathname == '/list') {
   // Redirecting to Category path: '/list?category=web' 
   function redirectToCategory(category, btn) {
     window.location = `?page=1&category=${category}`
-    // btn.classList.add('active');  // Add a functionality to get colored butonn
   }
   
   function valueSearch(e, element) {
@@ -28,12 +31,32 @@ if (window.location.pathname == '/list') {
     const search = element.childNodes[1].value; 
     window.location = `${window.location.origin}${window.location.pathname}?page=1&search=${search}`;
   }
+  
+  window.onload = function () { 
+    addActiveClass('list')
+
+    // 1st Way - Get paginationElement from data-attributes in HTML
+    // Adds 'active' class to the current page number pagination
+    const element = document.querySelector('#pagination-ul');
+    const currentPageNumber = element.dataset.currentPage;
+    const currentLi = document.querySelector(`#pagination-li-${currentPageNumber}`)
+    currentLi.classList.add('active')
+    
+    // 2nd Way - Get category from the url (query parameter)
+    // Adds 'active' class to the category button
+    const params = (new URL(document.location)).searchParams; // ? Difference b/w window and document object
+    const category = params.get("category");
+    const selectedCategory = document.querySelector(`#button-group-${category}`)
+    if (category) { // if no category selected
+      selectedCategory.classList.add('active')
+    }
+  }
 }
 
-// /register route
+// * /register route
 if (window.location.pathname == '/register') {
-  function stockChange(element) {
-    console.log('Hello', element);
-  }
+ window.onload = function () {
+  addActiveClass('register')
+ }
 }
 

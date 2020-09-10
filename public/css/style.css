@@ -26,7 +26,7 @@ body {
 }
 
 /* Home Page CSS */
-.overview {
+.text-ellipsis-home {
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 1.1em;
@@ -55,11 +55,19 @@ body {
 /* Company Page */
 .img-size {
   max-width: 30vw;
-  /* max-height: ; */
+}
+
+.text-ellipsis-company {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 1.5;
+  -webkit-line-clamp: 7; 
+  /* Write the number of lines you want to be displayed */
+  -webkit-box-orient: vertical;
 }
 
 /* 404 Page CSS */
-
 
 /* Register Page CSS */
 .uppercase {

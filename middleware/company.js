@@ -10,14 +10,13 @@ module.exports = {
       next()
     } catch (error) { // If error occurs
       console.log(`Error: Cannot find company with id: "${error.value}"`);
-      next('route');
+      next('route');  // * Skips all the next Middleware
     }
   },
   addImagesToDb: async (req, res, next) => {
     try {
       const getCompany = await Companies.findById(req.params.id).exec(); 
-      if (getCompany.get("images") === undefined) { 
-        // Company dosen't have an images added
+      if (getCompany.get("images") === undefined) { // Company dosen't have an images added
         // Get Images
         const imagesData = await axios.get(
           "https://randomuser.me/api/?results=4&gender=male"
@@ -45,8 +44,7 @@ module.exports = {
       const information =
         "name ipo founded_day founded_month founded_year description overview relationships images offices";
 
-      // const id = mongoose.Types.ObjectId(req.params.id);
-      const getCompanyData = await Companies.findById(
+       const getCompanyData = await Companies.findById(
         req.params.id,
         information
       ).exec();
@@ -59,15 +57,11 @@ module.exports = {
         ignoreHref: true,
       });
 
-      // Cutting the overwiew after 'n' periods
-      // console.log(companyData.overview.indexOf('.'))
-
       // Picking first 4 Execitives from Relationships Array
       if (companyData.relationships && (companyData.relationships.length > 1)) {
         companyData.relationships.length = 4;
       }
 
-      // console.log(companyData.offices);
       req.companyData = companyData;
     } catch (error) {
       console.error("Error: " + error);

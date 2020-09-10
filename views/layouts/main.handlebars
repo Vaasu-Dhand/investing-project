@@ -44,18 +44,15 @@
 <body>
   {{!-- Header --}}
   <nav class="navbar navbar-expand navbar-dark bg-primary justify-content-center">
-    {{!-- <div class="collapse navbar-collapse" id="navbarColor01"> --}}
     <ul class="navbar-nav justify-content-center">
-      {{!-- Add Logo here --}}
-      {{!-- </li> --}}
       <li class="nav-item">
-        <a class="nav-link h4 font-weight-normal" href="/" onclick="selectNavMenu(this)">Home</a>
+        <a id="nav-home" class="nav-link h4 font-weight-normal" href="/">Home</a>
       </li>
       <li class="nav-item px-5">
-        <a class="nav-link h4 font-weight-normal" href="/list?page=1">List</a>
+        <a id="nav-list" class="nav-link h4 font-weight-normal" href="/list?page=1">List</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link h4 font-weight-normal" href="/register">Register</a>
+        <a id="nav-register" class="nav-link h4 font-weight-normal" href="/register">Register</a>
       </li>
     </ul>
   </nav>

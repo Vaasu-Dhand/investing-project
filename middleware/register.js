@@ -25,38 +25,20 @@ module.exports = {
       const result = companySchema.validate(data, { abortEarly: false }); // Allows showing multiple errors
 
       const { value, error } = result; // Destructuring
-      // res.locals.newCompanyData = value;
-      // console.log(res.locals.newCompanyData);
       const errors = [];
       if (error) {
         error.details.forEach((error) => {
           errors.push(error.message);
         });
       }
-      if (errors.length > 0) {
-        // Validation Failed
+      if (errors.length > 0) { // Validation Failed
         res.status(422).render("register", {
           errors,
           value,
-          provinces: [
-            "AB",
-            "BC",
-            "MB",
-            "NB",
-            "NT",
-            "NS",
-            "NU",
-            "ON",
-            "PE",
-            "QC",
-            "SK",
-            "YT",
-          ], // Not Being used
         });
-      } else {
-        // 1st Validation Successful
+      } else { // 1st Validation Successful
 
-        function getDate() {  // Declare a snippet or global function in vs code
+        function getDate() {  // * Declare a snippet or global function in vs code
           const date = new Date();
           const dd = String(date.getDate()).padStart(2, "0");
           const mm = String(date.getMonth() + 1).padStart(2, "0"); //January is 0!
@@ -64,10 +46,10 @@ module.exports = {
           return mm + "/" + dd + "/" + yyyy;
         }
         const currentDate = getDate();
+
+        // Create a cookie (newCompany=companyName&dateCreated)
         const cookieData = JSON.stringify([value.title, currentDate]);
-        // console.log(temp);
-        // Add a cookie (newCompany=companyName)
-        res.cookie('newCompany', cookieData)
+        res.cookie('newCompany', cookieData, { maxAge: 86400000 })
         
         res.redirect(301, "/register/newCompany");
       }

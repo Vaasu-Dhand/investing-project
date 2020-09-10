@@ -45,9 +45,8 @@ app.engine(
     partialsDir: "views/partials",
     helpers: {
       // Register Page
-      rememberFields: function (field) {
-        // console.log(field);
-        return field != "" ? field : "";
+      rememberFields: function (field) {  // ! Dosent work properly (rememberFields Bug)
+        return field !== "" ? field : "";
       },
       // list Page
       rowBreaker: function (index) {
@@ -100,7 +99,7 @@ app.set("view engine", "handlebars");
 // Routes
 app.use("/", require("./routes/index"));
 
-// DB Config (Change This)
+// DB Config
 const db = process.env.MONGO_URI;
 
 // Connect to Mongo

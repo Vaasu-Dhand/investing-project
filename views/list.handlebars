@@ -8,33 +8,43 @@
 
 {{!-- Button Group --}}
 <div class="btn-group my-3 d-flex flex-wrap" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-secondary mr-3 rounded-pill" onclick="redirectToCategory('advertising', this)">Advertising</button>
-  <button type="button" class="btn btn-secondary mr-3 rounded-pill" onclick="redirectToCategory('ecommerce')">Ecommerce</button>
-  <button type="button" class="btn btn-secondary mr-3 rounded-pill" onclick="redirectToCategory('finance')">Finance</button>
-  <button type="button" class="btn btn-secondary mr-3 rounded-pill" onclick="redirectToCategory('games_video')">Games/Video</button>
-  <button type="button" class="btn btn-secondary mr-3 rounded-pill" onclick="redirectToCategory('hardware')">Hardware</button>
-  <button type="button" class="btn btn-secondary mr-3 rounded-pill" onclick="redirectToCategory('mobile')">Mobile</button>
-  <button type="button" class="btn btn-secondary mr-3 rounded-pill" onclick="redirectToCategory('music')">Music</button>
-  <button type="button" class="btn btn-secondary mr-3 rounded-pill" onclick="redirectToCategory('news')">News</button>
-  <button type="button" class="btn btn-secondary mr-3 rounded-pill" onclick="redirectToCategory('social')">Social</button>
-  <button type="button" class="btn btn-secondary mr-3 rounded-pill" onclick="redirectToCategory('software')">Software</button>
-  <button type="button" class="btn btn-secondary mr-3 rounded-pill" onclick="redirectToCategory('web')">Web</button>
+  <button type="button" class="btn btn-light mr-3 rounded-pill" id="button-group-advertising"
+    onclick="redirectToCategory('advertising', this)">Advertising</button>
+  <button type="button" class="btn btn-light mr-3 rounded-pill" id="button-group-ecommerce"
+    onclick="redirectToCategory('ecommerce')">Ecommerce</button>
+  <button type="button" class="btn btn-light mr-3 rounded-pill" id="button-group-finance"
+    onclick="redirectToCategory('finance')">Finance</button>
+  <button type="button" class="btn btn-light mr-3 rounded-pill" id="button-group-games_video"
+    onclick="redirectToCategory('games_video')">Games/Video</button>
+  <button type="button" class="btn btn-light mr-3 rounded-pill" id="button-group-hardware"
+    onclick="redirectToCategory('hardware')">Hardware</button>
+  <button type="button" class="btn btn-light mr-3 rounded-pill" id="button-group-mobile"
+    onclick="redirectToCategory('mobile')">Mobile</button>
+  <button type="button" class="btn btn-light mr-3 rounded-pill" id="button-group-music"
+    onclick="redirectToCategory('music')">Music</button>
+  <button type="button" class="btn btn-light mr-3 rounded-pill" id="button-group-news"
+    onclick="redirectToCategory('news')">News</button>
+  <button type="button" class="btn btn-light mr-3 rounded-pill" id="button-group-social"
+    onclick="redirectToCategory('social')">Social</button>
+  <button type="button" class="btn btn-light mr-3 rounded-pill" id="button-group-software"
+    onclick="redirectToCategory('software')">Software</button>
+  <button type="button" class="btn btn-light mr-3 rounded-pill" id="button-group-web"
+    onclick="redirectToCategory('web')">Web</button>
 </div>
 
 {{!-- Cards --}}
 {{> noResultsFound}}
 <div class="row">
-{{#each data.companies}}
-{{!-- {{log this}} --}}
+  {{#each data.companies}}
   {{!-- Breaks the line if index is even  --}}
-  {{#if (rowBreaker @index)}} 
-    <div class="w-100"></div>
+  {{#if (rowBreaker @index)}}
+  <div class="w-100"></div>
   {{/if}}
   <div class="col">
     <div class="card border-secondary mb-3 card-hover">
       <div class="card-body">
         <a class="card-title h4 text-dark" href='/list/{{this._id}}' style="display: block;">{{addSpace this.name}}
-        <span class="card-subtitle mb-2 text-muted h6 float-right">@{{this.twitter_username}}</span>
+          <span class="card-subtitle mb-2 text-muted h6 float-right">@{{this.twitter_username}}</span>
         </a>
         <p class="card-text capitalize">
           {{this.description}}
@@ -43,9 +53,8 @@
       </div>
     </div>
   </div>
-{{/each}}
+  {{/each}}
 </div>
 
 {{!-- Pagination --}}
-  {{{pagination}}}
-  
+{{{pagination}}}

@@ -25,7 +25,7 @@ module.exports = {
       information
     ).exec();
 
-    // Converting Doc to Object { Check if there;'s a way to get objects instead of documents in queries }
+    // ? Converting Doc to Object { Check if there;'s a way to get objects instead of documents in queries }
       const facebook = getFacebook.toObject();
       const apple = getApple.toObject();
       const twitter = getTwitter.toObject();
@@ -75,8 +75,5 @@ module.exports = {
 
     req.homeData = { facebook, apple, twitter, starbucks };
     next();
-  },
-  numbersAnimation: (req, res, next) => {
-    
   },
 };

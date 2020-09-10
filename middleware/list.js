@@ -49,9 +49,8 @@ module.exports = {
     const endIndex = page * limit; // Not Being Used
 
     if (!req.query.category && !req.query.search) {
-      // Initial Render
+      // Initial Render (Get 20 companies sorted (page Load))
       // No Category Selected
-      // Get 20 companies sorted (page Load)
       const onLoadData = await Companies.find(
         {
           name: { $regex: /^[a-zA-Z\s]*$/, $options: "i" },
@@ -69,7 +68,6 @@ module.exports = {
       onLoadData.forEach((company, index) => {
         customOperations(company);
       });
-      // console.log(Companies.countDocuments().exec());
 
       data.companies = onLoadData;
 
@@ -125,8 +123,8 @@ module.exports = {
     }
     if (req.query.search) {
       const search = startCase(camelCase(req.query.search)).replace(/ /g, ""); // Lodash
-      // console.log(search);
-      const onSearchData = await Companies.find({ name: search },
+      const onSearchData = await Companies.find(
+        { name: search },
         "name twitter_username description permalink total_money_raised"
       )
         .sort("name")
@@ -140,13 +138,13 @@ module.exports = {
       });
 
       data.companies = onSearchData;
-      
+
       // Query Count
       const queryCount = await Companies.find({ name: search })
-      .countDocuments()
-      .exec();
+        .countDocuments()
+        .exec();
       if (queryCount === 0) { // No Companies Found
-        data.queryCount = true
+        data.queryCount = true;
       }
 
       // Pagination Variables
@@ -172,20 +170,56 @@ module.exports = {
     for (let i = 1; i <= totalPages; i++) {
       pages.push(i);
     }
-    const innerHTML = pages.map(
-      (number) =>
-        `<li class='page-item'><a href=${newUrl(
+
+    let innerHTML;
+      // Less Than 10 Pages
+      innerHTML = pages.map(
+        (number) =>
+          `<li class='page-item' id="pagination-li-${number}"><a href=${newUrl(
+            number
+          )} class='page-link'>${number}</a></li>`
+      );
+    if (false) { // * Not Implemented: ...pagination functionality
+
+      // More Than 10 Pages
+      const dots = `<li class='page-item disabled'>...</li>`
+      console.log(dots);
+      innerHTML = pages.map((number) => {
+        const standardReturn = `<li class='page-item' id="pagination-li-${number}"><a href=${newUrl(
           number
-        )} class='page-link'>${number}</a></li>`
-    );
+        )} class='page-link'>${number}</a></li>`;
+        if (number === 1) {  // First Page
+          return standardReturn
+        }
+        // Write code for - 3 current number 
+        const leftSideNumbers = [(currentPageNumber-3), (currentPageNumber-2), (currentPageNumber-1)]
+
+        // console.log(leftSideNumbers); 
+        // leftSideNumbers.forEach((pageNumber) => {
+        //   if ((pageNumber < 0) || (pageNumber === 1)) {
+
+        //   }
+        // })
+        if (number === currentPageNumber) { // Current page 
+          return standardReturn
+        }
+        // Write code for + 3 current number 
+        const rightSideNumbers = [(currentPageNumber+1), (currentPageNumber+2), (currentPageNumber+3)]
+        console.log(rightSideNumbers);
+        if (number === totalPages) {  // Last page
+          return standardReturn
+        }
+      });
+      // console.log(innerHTML);
+    }
+
     let paginationHTML = `
-    <div class="text-center">
-    <ul class='pagination pagination-lg'>
+    <div>
+    <ul id="pagination-ul" class='pagination pagination-lg flex-wrap' data-current-page=${currentPageNumber} style="justify-content: center">
     ${innerHTML.join("")}
     </ul>
     </div>
     `;
-    // console.log(req.url);
     res.locals.paginationHTML = paginationHTML;
     next();
   },
